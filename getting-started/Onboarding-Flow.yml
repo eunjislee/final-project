@@ -1,0 +1,144 @@
+//
+//  WelcomePage .swift
+//  OnboardingFlow
+//
+//  Created by Eunji Lee on 11/14/24.
+//
+
+import SwiftUI
+
+struct WelcomePage: View {
+    var body: some View {
+        VStack{
+            ZStack {
+                RoundedRectangle(cornerRadius: 30)
+                    .frame(width:150, height: 150)
+                    .foregroundStyle(.tint)
+                
+                Image(systemName: "figure.2.and.child.holdinghands")
+                    .font(.system(size:70))
+                    .foregroundStyle(.white)
+            }
+            
+            Text("Welcome to MyApp")
+                .font(.title)
+                .fontWeight(.semibold)
+                .padding(.top)
+
+            
+            Text("Description text")
+                .font(.title2)
+
+        }
+
+        .padding()
+
+    }
+}
+#Preview {
+    WelcomePage()
+}
+
+//
+//  FeaturesPage.swift
+//  OnboardingFlow
+//
+//  Created by Eunji Lee on 11/15/24.
+//
+
+import SwiftUI
+
+struct FeaturesPage: View {
+    var body: some View {
+        VStack(spacing:30) {
+            Text("Features")
+                .font(.title)
+                .fontWeight(.semibold)
+                .padding(.bottom)
+                .padding(.top,100)
+            
+            FeatureCard(iconName: "person.2.crop.square.stack.fill", description: "A multiline description about a feature paired with the image on the left.")
+            
+            FeatureCard(iconName: "quote.bubble.fill", description: "Short summary")
+            
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    FeaturesPage()
+        .frame(maxHeight: .infinity)
+        .background(Gradient(colors:gradientColors))
+        .foregroundStyle(.white)
+}
+
+//
+//  FeatureCard.swift
+//  OnboardingFlow
+//
+//  Created by Eunji Lee on 11/15/24.
+//
+
+import SwiftUI
+
+struct FeatureCard: View {
+    let iconName: String
+    let description: String
+    
+    var body: some View{
+        HStack {
+            Image(systemName: iconName)
+                .font(.largeTitle)
+                .frame(width: 50)
+                .padding(.trailing, 10)
+            
+            Text(description)
+            
+            Spacer()
+        }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundStyle(.tint)
+                .opacity(0.25)
+                .brightness(-0.4)
+        }
+    }
+}
+
+#Preview {
+    FeatureCard(iconName: "person.2.crop.square.stack.fill",
+description: "A multiline descripton about a feature paired with an image on the left")
+}
+
+//
+//  ContentView.swift
+//  OnboardingFlow
+//
+//  Created by Eunji Lee on 11/14/24.
+//
+
+import SwiftUI
+
+let gradientColors: [Color] = [
+    .gradientTop,
+    .gradientBottom
+]
+
+struct ContentView: View {
+    var body: some View {
+        TabView {
+            WelcomePage()
+            FeaturesPage()
+        }
+        .background(Gradient(colors:gradientColors))
+        .tabViewStyle(.page)
+        .foregroundStyle(.white)
+    }
+}
+
+#Preview {
+    ContentView()
+}
