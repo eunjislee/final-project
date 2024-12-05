@@ -1,0 +1,29 @@
+Chat Prototype Code
+//
+//  ContentView.swift
+//  ChatPrototype
+//
+//  Created by Eunji Lee on 11/12/24.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing:25){
+            Text("Knock Knock!")
+                .padding()
+                .background(Color.yellow, in: RoundedRectangle(cornerRadius: 8))
+                .shadow(radius: 2)
+            Text("Whos there..?")
+                .padding()
+                .background(Color.teal, in: RoundedRectangle(cornerRadius: 8))
+                .shadow(radius: 2)
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    ContentView()
+}
